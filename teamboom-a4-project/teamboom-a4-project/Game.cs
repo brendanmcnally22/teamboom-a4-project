@@ -14,10 +14,10 @@ public class Game
 
     }
 
-    
+
     public void Update()
     {
-
+        Console.WriteLine("What a commit");
     }
 }
 

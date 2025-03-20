@@ -18,7 +18,7 @@ public class Game
 
     public void Update()
     {
-        
+        Window.ClearBackground(Color.White);
     }
 }
 

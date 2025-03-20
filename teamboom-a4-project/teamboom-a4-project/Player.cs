@@ -5,9 +5,35 @@ namespace MohawkGame2D
 {
     public class Player
     {
-        public void Render(float x, float y)
+        public Vector2 Position;
+        Vector2 velocity;
+        float speed = 200f;
+        float jumpPower = 300f;
+        float gravity = 500f;
+        float jumpDelay = 0.2f;
+        float jumpTimer = 0f;
+
+        public Player(Vector2 startPosition)
         {
-            //add asset loading here
+            Position = startPosition;
+        }
+
+        
+
+        public void movePlayer(float deltaTime) // Function to handle Player Movement 
+        {
+
+            // Movement for the player
+            if (Input.IsKeyboardKeyDown(KeyboardInput.A))
+            { velocity.X = -speed; }
+
+            else if (Input.IsKeyboardKeyDown(KeyboardInput.D))
+            {
+                   velocity.X = speed;
+            }
+            else velocity.X = 0;
+
+
         }
     }
 }

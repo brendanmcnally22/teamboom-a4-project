@@ -3,24 +3,17 @@ using System;
 
 namespace MohawkGame2D
 {
-    public class Player
+    public static class Player
     {
-        public Vector2 Position;
-        Vector2 velocity;
-        float speed = 200f;
-        float jumpPower = 300f;
-        float gravity = 500f;
-        float jumpDelay = 0.2f;
-        float jumpTimer = 0f;
+        public static Vector2 Position;
+        static Vector2 velocity;
+        static float speed = 200f;
+        static float jumpPower = 300f;
+        static float gravity = 500f;
+        static float jumpDelay = 0.2f;
+        static float jumpTimer = 0f;
 
-        public Player(Vector2 startPosition)
-        {
-            Position = startPosition;
-        }
-
-        
-
-        public void movePlayer(float deltaTime) // Function to handle Player Movement 
+        public static void movePlayer(float deltaTime) // Function to handle Player Movement 
         {
 
             // Movement for the player
@@ -33,7 +26,24 @@ namespace MohawkGame2D
             }
             else velocity.X = 0;
 
+            jumpTimer += deltaTime;
 
+            // Jump using Space
+            if (jumpTimer > jumpDelay && Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+            {
+                velocity.Y = -jumpPower;
+                jumpTimer = 0f;
+            }
+
+            velocity.Y += gravity * deltaTime; // Apply Gravity 
+            Position += velocity * deltaTime;  // Update Player Position
+
+        }
+
+        public static void renderPlayer()
+        {
+            Draw.FillColor = Color.Red;
+            Draw.Circle(Position,25);
         }
     }
 }

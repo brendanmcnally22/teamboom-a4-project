@@ -10,9 +10,9 @@ namespace MohawkGame2D
     public class Player
     {
         //variables here
-        Vector2 plPosition = new Vector2(24, 24);
-        Vector2 plVelocity;
-        float plGravSpeed;
+        public Vector2 plPosition = new Vector2(24, 24);
+        public Vector2 plVelocity;
+        public float plGravSpeed = 10;
         public bool isJumping = false;
 
 

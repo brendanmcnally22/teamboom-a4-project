@@ -24,6 +24,7 @@ public class Game
     {
         Window.ClearBackground(Color.OffWhite);
         player.Render();
+
     }
 }
 

@@ -9,11 +9,24 @@ namespace MohawkGame2D
 {
     public class Player
     {
+        //variables here
+        Vector2 plPosition = new Vector2(24, 24);
+        Vector2 plVelocity;
+        float plGravSpeed;
+        public bool isJumping = false;
 
 
-        public void Render(float x, float y)
+        public void Render()
         {
-            //add asset loading here
+            //replace draw with asset loading here
+            Draw.FillColor = Color.Blue;
+            Draw.Circle(plPosition, 10);
+        }
+
+        public void Update()
+        {
+            plVelocity.Y += Time.DeltaTime * plGravSpeed;
+            plPosition += plVelocity;
         }
     }
 }

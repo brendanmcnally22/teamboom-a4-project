@@ -45,10 +45,10 @@ namespace MohawkGame2D
 
         }
 
-        public static void renderPlayer()
+        public static void renderPlayer(Vector2 cameraOffset)
         {
             Draw.FillColor = Color.Red;
-            Draw.Circle(Position,25);
+            Draw.Circle(Position - cameraOffset,25);
         }
     }
 }

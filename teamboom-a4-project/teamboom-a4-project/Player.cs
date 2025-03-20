@@ -12,15 +12,15 @@ namespace MohawkGame2D
         //variables here
         public Vector2 plPosition = new Vector2(24, 24);
         public Vector2 plVelocity;
-        public float plGravSpeed = 10;
+        public float plGravSpeed = 1000;
         public bool isJumping = false;
 
 
-        public void Render()
+        public void Render(Vector2 position, Vector2 velocity, float gravity)
         {
             //replace draw with asset loading here
             Draw.FillColor = Color.Blue;
-            Draw.Circle(plPosition, 10);
+            Draw.Circle(position, 10);
         }
 
         public void Update()

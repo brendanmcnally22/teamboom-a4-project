@@ -12,7 +12,7 @@ public class Game
     public void Setup()
     {
         Window.SetSize(800, 600);
-        Window.SetTitle("Team BOOM");
+        Window.SetTitle("Team BOOM"); // Hey I want to Merge this to Main
     }
 
 

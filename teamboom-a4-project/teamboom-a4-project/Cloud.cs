@@ -18,11 +18,22 @@ namespace MohawkGame2D
 
         public static Cloud cloudInstance1;
         public static Cloud cloudInstance2;
-
+        public static Cloud cloudInstance3;
+        public static Cloud cloudInstance4;
+        public static Cloud cloudInstance5;
+        public static Cloud cloudInstance6;
+        public static Cloud cloudInstance7;
+        public static Cloud cloudInstance8;
         static Cloud()
         {
             cloudInstance1 = new Cloud(96, cloudTexture1);
             cloudInstance2 = new Cloud(96, cloudTexture2);
+            cloudInstance3 = new Cloud(96, cloudTexture1);
+            cloudInstance4 = new Cloud(96, cloudTexture2);
+            cloudInstance5 = new Cloud(96, cloudTexture1);
+            cloudInstance6 = new Cloud(96, cloudTexture2);
+            cloudInstance7 = new Cloud(96, cloudTexture1);
+            cloudInstance8 = new Cloud(96, cloudTexture2);
         }
 
         public Cloud(float width, Texture2D texture)

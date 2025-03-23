@@ -14,9 +14,9 @@ public class Game
 
     Texture2D Lep =
             Graphics.LoadTexture("../../../../Assets/Graphics/Lep.png");
-     
-    Vector2 cameraOffset; // Camera position to follow player 
-    float deltaTime = 1f / 60f; // Framerate :D :D :D 
+
+    Texture2D Coin =
+                Graphics.LoadTexture("../../../../Assets/Graphics/Coin.png");
     public void Setup()
     {
         Window.SetSize(800, 600);

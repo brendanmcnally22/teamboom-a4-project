@@ -2,8 +2,7 @@
 using System.Numerics;
 
 namespace MohawkGame2D;
-namespace MohawkGame2D
-{
+
     class Cloud
     {
         public Vector2 position;
@@ -38,6 +37,6 @@ namespace MohawkGame2D
             Graphics.Draw(texture, position);
         }
     }
-}
+
 
 

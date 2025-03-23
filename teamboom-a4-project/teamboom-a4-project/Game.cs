@@ -11,8 +11,9 @@ public class Game
 
     Texture2D Lep =
             Graphics.LoadTexture("../../../../Assets/Graphics/Lep.png");
-
-
+     
+    Vector2 cameraOffset; // Camera position to follow player 
+    float deltaTime = 1f / 60f; // Framerate :D :D :D 
     public void Setup()
     {
         

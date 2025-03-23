@@ -7,6 +7,6 @@ namespace MohawkGame2D
     class GoldCoin
     {
         Texture2D Coin =
-              Graphics.LoadTexture("../../../../Assets/Graphics/Coin.png");
+              Graphics.LoadTexture("../../../../../Assets/Graphics/Coin.png");
     }
 }

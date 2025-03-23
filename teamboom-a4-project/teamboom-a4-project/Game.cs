@@ -8,7 +8,15 @@ namespace MohawkGame2D;
 // Add Project
 public class Game
 {
- 
+
+    Texture2D Lep =
+            Graphics.LoadTexture("../../../../Assets/Graphics/Lep.png");
+
+    Texture2D Coin =
+            Graphics.LoadTexture("../../../../Assets/Graphics/Coin.png");
+
+
+
     public void Setup()
     {
         

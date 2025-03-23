@@ -8,20 +8,21 @@ namespace MohawkGame2D;
 // Add Project
 public class Game
 {
+    // Camera to follow the player
+    Vector2 cameraOffset;
+    float deltaTime = 1f / 60f; // Setting Frame Rate for now 
 
     Texture2D Lep =
-            Graphics.LoadTexture("../../../../Assets/Graphics/Lep.png");
-
+               Graphics.LoadTexture("../../../../Assets/Graphics/Lep.png");
+    Texture2D Coin =
+               Graphics.LoadTexture("../../../../Assets/Graphics/Coin.png");
 
     public void Setup()
     {
-        
         Window.SetSize(800, 600);
-        Window.SetTitle("Team BOOM"); 
+        Window.SetTitle("Team BOOM");
 
     }
-
-
     public void Update()
     {
         Window.ClearBackground(Color.White);

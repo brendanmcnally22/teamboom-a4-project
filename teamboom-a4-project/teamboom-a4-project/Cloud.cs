@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 
-namespace MohawkGame2D;
+
 namespace MohawkGame2D
 {
     class Cloud
@@ -39,5 +39,3 @@ namespace MohawkGame2D
         }
     }
 }
-
-

@@ -8,6 +8,7 @@ namespace MohawkGame2D;
 // Add Project
 public class Game
 {
+    GoldCoin coin;
     // Camera to follow the player
     Vector2 cameraOffset;
     float deltaTime = 1f / 60f; // Setting Frame Rate for now 
@@ -21,6 +22,7 @@ public class Game
     {
         Window.SetSize(800, 600);
         Window.SetTitle("Team BOOM");
+        coin = new GoldCoin();
 
     }
     public void Update()
@@ -39,8 +41,8 @@ public class Game
 
         Draw.FillColor = Color.Yellow;
         Draw.Circle(new Vector2(400, 400) - cameraOffset, 25);
-       
-        
+
+        coin.Render();
     }
 }
 

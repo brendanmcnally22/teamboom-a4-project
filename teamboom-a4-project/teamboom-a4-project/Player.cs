@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using System;
-using System.Numerics;  //dont need this twice
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

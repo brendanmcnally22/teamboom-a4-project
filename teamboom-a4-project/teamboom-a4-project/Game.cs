@@ -9,8 +9,8 @@ namespace MohawkGame2D;
 public class Game
 {
     //Coin Variables
-    public int coinCount = 0;
     GoldCoin coin;
+    public int coinCount = 0;
     public Vector2[] coinPos =
         {
         new Vector2(20, 20),
@@ -27,13 +27,11 @@ public class Game
     Texture2D Lep =
             Graphics.LoadTexture("../../../../Assets/Graphics/Lep.png");
 
-    Texture2D Coin =
-                Graphics.LoadTexture("../../../../Assets/Graphics/Coin.png");
     public void Setup()
     {
     Window.SetSize(800, 600);
     Window.SetTitle("Team BOOM");
-    //Spawning Coins
+        //Spawning Coins
         GoldCoin[] coins = [
     new GoldCoin(coinPos[1]),
     new GoldCoin(coinPos[2]),
@@ -76,7 +74,7 @@ public class Game
             coinCount += 1;
         }
         //Coin Counter
-        Text.Size = 12;
+        Text.Size = 14;
         Text.Draw($"Coins {coinCount}", 360, 20);
     }
 }

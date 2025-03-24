@@ -8,6 +8,8 @@ namespace MohawkGame2D;
 // Add Project
 public class Game
 {
+    //Coin Variables
+    public int coinCount = 0;
     GoldCoin coin;
     public Vector2[] coinPos =
         {
@@ -15,6 +17,8 @@ public class Game
         new Vector2(30, 30),
         new Vector2(40, 40)
     };
+    public Vector2 offScreen = new Vector2(0, 2000);
+
 
     // Camera to follow the player
     Vector2 cameraOffset;
@@ -27,14 +31,15 @@ public class Game
                 Graphics.LoadTexture("../../../../Assets/Graphics/Coin.png");
     public void Setup()
     {
-        Window.SetSize(800, 600);
-        Window.SetTitle("Team BOOM");
+    Window.SetSize(800, 600);
+    Window.SetTitle("Team BOOM");
+    //Spawning Coins
         GoldCoin[] coins = [
     new GoldCoin(coinPos[1]),
     new GoldCoin(coinPos[2]),
     new GoldCoin(coinPos[3])
     ];
-
+     
     }
     public void Update()
     {
@@ -53,7 +58,26 @@ public class Game
         Draw.FillColor = Color.Yellow;
         Draw.Circle(new Vector2(400, 400) - cameraOffset, 25);
 
+        //Coin Collision & Rending
         coin.Render(coinPos);
+        if (Player.Position.X - coinPos[1].X <= 12 && Player.Position.Y - coinPos[1].Y <= 12)
+        {
+            coinPos[1] = offScreen;
+            coinCount += 1;
+        }
+        if (Player.Position.X - coinPos[2].X <= 12 && Player.Position.Y - coinPos[2].Y <= 12)
+        {
+            coinPos[2] = offScreen;
+            coinCount += 1;
+        }
+        if (Player.Position.X - coinPos[3].X <= 12 && Player.Position.Y - coinPos[3].Y <= 12)
+        {
+            coinPos[3] = offScreen;
+            coinCount += 1;
+        }
+        //Coin Counter
+        Text.Size = 12;
+        Text.Draw($"Coins {coinCount}", 360, 20);
     }
 }
 

@@ -11,7 +11,9 @@ namespace MohawkGame2D
         Texture2D PotofGold = Graphics.LoadTexture("../../../../../Assets/Graphics/PotofGold.png");
 
         Vector2 cameraPosition = Vector2.Zero; 
-        float cameraSpeed = 1f;  
+        float backgroundX = 0;
+        float cameraSpeed = 1f;
+        float backgroundSpeed = 0f;
 
         public void Setup()
         {
@@ -42,12 +44,13 @@ namespace MohawkGame2D
 
         public void Update()
         {
-            
             Window.ClearBackground(Color.OffWhite);
-            Graphics.Draw(BGS, -cameraPosition.X, 0); 
+            Graphics.Draw(BGS, backgroundX, 0);
+            
+            backgroundX += backgroundSpeed;
 
             cameraPosition.X += cameraSpeed;
-
+            
             for (int i = 0; i < clouds.Length; i++)
             {
                 clouds[i].position.X -= cameraSpeed;

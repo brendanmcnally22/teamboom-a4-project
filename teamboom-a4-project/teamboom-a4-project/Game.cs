@@ -32,11 +32,11 @@ public class Game
     Window.SetSize(800, 600);
     Window.SetTitle("Team BOOM");
         //Spawning Coins
-        GoldCoin[] coins = [
-    new GoldCoin(coinPos[1]),
-    new GoldCoin(coinPos[2]),
-    new GoldCoin(coinPos[3])
-    ];
+     //   GoldCoin[] coins = [
+  //  new GoldCoin(coinPos[1]),
+ //   new GoldCoin(coinPos[2]),
+ //   new GoldCoin(coinPos[3])
+ //  ];
      
     }
     public void Update()
@@ -57,7 +57,7 @@ public class Game
         Draw.Circle(new Vector2(400, 400) - cameraOffset, 25);
 
         //Coin Collision & Rending
-        coin.Render(coinPos);
+       // coin.Render(coinPos);
         if (Player.Position.X - coinPos[1].X <= 12 && Player.Position.Y - coinPos[1].Y <= 12)
         {
             coinPos[1] = offScreen;

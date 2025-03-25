@@ -9,7 +9,9 @@ namespace MohawkGame2D;
 public class Game
 {
     //Coin Variables
-    GoldCoin coin;
+    //GoldCoin coin;
+    //GoldCoin[] coins;
+    GoldCoin[] coins = Array.Empty<GoldCoin>();
     public int coinCount = 0;
     public Vector2[] coinPos =
         {
@@ -25,18 +27,21 @@ public class Game
     float deltaTime = 1f / 60f; // Setting Frame Rate for now 
 
     Texture2D Lep =
-            Graphics.LoadTexture("../../../../Assets/Graphics/Lep.png");
+            Graphics.LoadTexture("../../../../../Assets/Graphics/Lep.png");
 
     public void Setup()
     {
     Window.SetSize(800, 600);
     Window.SetTitle("Team BOOM");
         //Spawning Coins
-        GoldCoin[] coins = [
-    new GoldCoin(coinPos[1]),
-    new GoldCoin(coinPos[2]),
-    new GoldCoin(coinPos[3])
-    ];
+        //GoldCoin[] coins;
+        coins = new GoldCoin[]
+        {
+                new GoldCoin(coinPos[0]),
+                new GoldCoin(coinPos[1]),
+                new GoldCoin(coinPos[2])
+        };
+
      
     }
     public void Update()
@@ -57,25 +62,25 @@ public class Game
         Draw.Circle(new Vector2(400, 400) - cameraOffset, 25);
 
         //Coin Collision & Rending
-        coin.Render(coinPos);
-        if (Player.Position.X - coinPos[1].X <= 12 && Player.Position.Y - coinPos[1].Y <= 12)
+        foreach (GoldCoin coin in coins)
         {
-            coinPos[1] = offScreen;
-            coinCount += 1;
+            coin.Render(cameraOffset);
         }
-        if (Player.Position.X - coinPos[2].X <= 12 && Player.Position.Y - coinPos[2].Y <= 12)
-        {
-            coinPos[2] = offScreen;
-            coinCount += 1;
-        }
-        if (Player.Position.X - coinPos[3].X <= 12 && Player.Position.Y - coinPos[3].Y <= 12)
-        {
-            coinPos[3] = offScreen;
-            coinCount += 1;
-        }
+
+        for (int i = 0; i < coins.Length; i++)
+            {
+                if (Math.Abs(Player.Position.X - coinPos[i].X) <= 12 &&
+             Math.Abs(Player.Position.Y - coinPos[i].Y) <= 12)
+                {
+                    coins[i].position = offScreen;
+                    coinCount ++ ;
+                }
+            }
+        
+
         //Coin Counter
         Text.Size = 14;
-        Text.Draw($"Coins {coinCount}", 360, 20);
+        Text.Draw($"Coins {coinCount}", 720, 20);
     }
 }
 

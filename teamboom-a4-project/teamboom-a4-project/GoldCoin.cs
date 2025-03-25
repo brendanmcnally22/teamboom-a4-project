@@ -20,8 +20,6 @@ namespace MohawkGame2D
         public void Render(Vector2 cameraOffset)
         {
             Graphics.Draw(texture, cameraOffset);
-            Graphics.Draw(texture, cameraOffset);
-            Graphics.Draw(texture, cameraOffset);
         }
     }
 

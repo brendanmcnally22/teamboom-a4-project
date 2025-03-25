@@ -5,15 +5,16 @@ namespace MohawkGame2D
 {
     public class Game
     {
-        Cloud[] clouds = new Cloud[12];   // Array to hold clouds
         Texture2D Lep = Graphics.LoadTexture("../../../../../Assets/Graphics/Lep.png");
         Texture2D BGS = Graphics.LoadTexture("../../../../../Assets/Graphics/BGS.png");
         Texture2D PotofGold = Graphics.LoadTexture("../../../../../Assets/Graphics/PotofGold.png");
 
-        Vector2 cameraPosition = Vector2.Zero; 
-        float backgroundX = 0;
+        Vector2 cameraPosition = Vector2.Zero;
         float cameraSpeed = 1f;
+        Cloud[] clouds = new Cloud[12];   // Array to hold clouds
+        
         float backgroundSpeed = 0f;
+        float backgroundX = 0;
 
         public void Setup()
         {

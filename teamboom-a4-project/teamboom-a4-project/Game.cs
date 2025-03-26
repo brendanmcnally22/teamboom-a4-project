@@ -16,8 +16,10 @@ namespace MohawkGame2D
         Player player; // Player instance :D 
         int goldCounter = 0; // Gold Counter
         new Color menuBackground = new Color(9, 61, 38);
+        new Color winScreenBackground = new Color(0, 167, 53);
         bool menuScreen = true;
         bool gameOver = false;
+        bool win = false; // Set this to true when player collects all the coins aka wins the game
 
 
         float backgroundSpeed = 0f;
@@ -69,10 +71,13 @@ namespace MohawkGame2D
 
             if (gameOver)
             {
-                gameOverScreen();
+                if (win)
+                    winScreen();
+                else
+                    gameOverScreen();
                 return;
             }
-
+            
             updateClouds();
             updateCoins();
             player.playerMovement();
@@ -168,7 +173,7 @@ namespace MohawkGame2D
                 {
                     coin.collected = true;
                     goldCounter++;
-                    Console.WriteLine($"you now have {goldCounter} gold");
+                   
                 }
                 coin.renderCoin();
             }
@@ -181,10 +186,19 @@ namespace MohawkGame2D
             if (player.position.Y > 600)
             {
                 gameOver = true;
+                win = false;
             }
 
-        }
-        
+            if (goldCounter == goldCoins.Length)
+            {
+                gameOver = true;
+                win = true;
+                
+            }
+
+            }
+
+
         private void mainMenuLogic()
         {
             Window.ClearBackground(menuBackground);
@@ -199,7 +213,7 @@ namespace MohawkGame2D
 
             updateClouds();
 
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.Enter) || (Input.IsControllerButtonPressed(0, ControllerButton.RightFaceDown)))
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.Enter) || (Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft)))
             {
                 menuScreen = false;
                 Setup();
@@ -210,19 +224,45 @@ namespace MohawkGame2D
         private void gameOverScreen()
         {
             Window.ClearBackground(Color.Red);
+
+            Text.Color = Color.Black;
             Text.Draw("Game Over! Press R or X to Restart!", new Vector2(70, 250));
+            
             
             updateClouds();// Goated clouds! They look so good 
             drawCounter(); // Display player end stats aswell like goated or what? 
            
 
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceRight))
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft))
                 {
              // Restart the game pls
 
                 menuScreen = true;
                 Setup();
             }
+        }
+        
+        private void winScreen() // Handle the Win screen input and also draw it aswell!
+        {
+            Window.ClearBackground(winScreenBackground);
+
+            Text.Color = Color.White;
+          
+
+            Text.Draw("You Win, You are the LEAPRACHAUN", new Vector2(150, 50));
+            Text.Draw("Press R or X to restart!", new Vector2(150, 250));
+            Text.Draw($"You Collected {goldCounter} Gold!", new Vector2(150, 100));
+
+           
+
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft))
+            {
+                menuScreen = true; // Return to the main menu
+                Setup();
+
+            }
+           
+
         }
        
     }

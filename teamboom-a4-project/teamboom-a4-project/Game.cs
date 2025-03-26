@@ -12,6 +12,7 @@ namespace MohawkGame2D
         Vector2 cameraPosition = Vector2.Zero;
         float cameraSpeed = 1f;
         Cloud[] clouds = new Cloud[12];   // Array to hold clouds
+        GoldCoin[] goldCoins;
         Player player; // Player instance :D 
         Vector2 cameraOffset;
 
@@ -37,6 +38,11 @@ namespace MohawkGame2D
             };
 
             player = new Player(new Vector2(100, 100), Lep); // Creating "LEP!" (the goaat)
+
+            goldCoins = new GoldCoin[]
+            {
+                new GoldCoin(new Vector2(150,180))
+            };
         }
 
         public void Update()
@@ -62,6 +68,11 @@ namespace MohawkGame2D
 
             player.playerMovement();
             player.renderPlayer();
+            
+
+           
+
+            
      
         }
     }

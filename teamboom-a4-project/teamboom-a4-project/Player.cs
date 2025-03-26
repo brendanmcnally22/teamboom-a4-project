@@ -51,7 +51,7 @@ namespace MohawkGame2D;
 
         if (onPlatform && jumpTimer <= 0 && (Input.IsKeyboardKeyPressed(KeyboardInput.Space) || Input.IsControllerButtonPressed(0,ControllerButton.LeftTrigger1))) // basically saying JUMP Only if your on the PLATFORM 
         {
-            velocity.Y = -7f;
+            velocity.Y = -10f;
             jumpTimer = jumpCooldown; 
             onPlatform = false;
            

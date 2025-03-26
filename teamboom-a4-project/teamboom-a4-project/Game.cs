@@ -157,6 +157,13 @@ namespace MohawkGame2D
         {
             foreach (var coin in goldCoins)
             {
+
+                coin.position.X -= cameraSpeed;  // Making the coins stay with the camera
+                if (coin.position.X < -100)
+                {
+                    coin.position.X = 800;
+                } 
+                
                 if (!coin.collected && CollisionHelper.isColliding(player.position, player.GetSize(), coin.position, coin.GetSize()))
                 {
                     coin.collected = true;

@@ -43,7 +43,7 @@ namespace MohawkGame2D
 
             player = new Player(new Vector2(100, 100), Lep); // Creating "LEP!" (the goaat)
 
-            goldCoins = new GoldCoin[]
+            goldCoins = new GoldCoin[] // Where we draw the Coins 
             {
                 new GoldCoin(new Vector2(200,340)),
                 new GoldCoin(new Vector2(250,300)),
@@ -63,20 +63,13 @@ namespace MohawkGame2D
 
             if (menuScreen)
             {
-                Window.ClearBackground(menuBackground);
+                mainMenuLogic();
                 return;
             }
 
             if (gameOver)
             {
-                Window.ClearBackground(Color.Red); // This looks so good! Great things happen by accident! 
-                updateClouds();
-                Text.Draw("Game Over! Press R or Square to Restart!", new Vector2(70, 250));
-                drawCounter();
-                if (Input.IsKeyboardKeyDown(KeyboardInput.R))
-                {
-                    Setup();
-                }
+                gameOverScreen();
                 return;
             }
 
@@ -185,7 +178,46 @@ namespace MohawkGame2D
 
         }
         
-        private void 
+        private void mainMenuLogic()
+        {
+            Window.ClearBackground(menuBackground);
+
+            Text.Color = Color.White;
+
+            Text.Size = 72;
+            Text.Draw("LEAPrachaun", new Vector2(200, 100));
+            Text.Size = 32;
+            Text.Draw("Press Enter or X to begin!", new Vector2(200, 170));
+          
+
+            updateClouds();
+
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.Enter) || (Input.IsControllerButtonPressed(0, ControllerButton.RightFaceDown)))
+            {
+                menuScreen = false;
+                Setup();
+            }
+            
+        }
+
+        private void gameOverScreen()
+        {
+            Window.ClearBackground(Color.Red);
+            Text.Draw("Game Over! Press R or X to Restart!", new Vector2(70, 250));
+            
+            updateClouds();// Goated clouds! They look so good 
+            drawCounter(); // Display player end stats aswell like goated or what? 
+           
+
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceRight))
+                {
+             // Restart the game pls
+
+                menuScreen = true;
+                Setup();
+            }
+        }
+       
     }
 }
 

@@ -15,6 +15,7 @@ namespace MohawkGame2D
         GoldCoin[] goldCoins; // Gold Coins instance
         Player player; // Player instance :D 
         int goldCounter = 0; // Gold Counter
+        bool menuScreen = true;
         bool gameOver = false;
 
 
@@ -55,12 +56,16 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
-           
+            Graphics.Draw(BGS, backgroundX, 0);
+            backgroundX += backgroundSpeed;
+            cameraPosition.X += cameraSpeed;
 
             if (gameOver)
             {
-                Window.ClearBackground(Color.Red);
-                Text.Draw("Game Over! Press R or Square to Restart!", new Vector2(70,250));
+                Window.ClearBackground(Color.Red); // This looks so good! Great things happen by accident! 
+                updateClouds();
+                Text.Draw("Game Over! Press R or Square to Restart!", new Vector2(70, 250));
+                drawCounter();
                 if (Input.IsKeyboardKeyDown(KeyboardInput.R))
                 {
                     Setup();
@@ -68,30 +73,17 @@ namespace MohawkGame2D
                 return;
             }
 
-
-            Graphics.Draw(BGS, backgroundX, 0);
-            backgroundX += backgroundSpeed;
-            cameraPosition.X += cameraSpeed;
-
-
             updateClouds();
             updateCoins();
-           
             player.playerMovement();
             player.renderPlayer();
             drawCounter();
             CheckPlatformCollision();
-
-       
-
-            // Trying simple Game over Logic like if the player falls of the screen or the coins are all collected? 
-            if (player.position.Y > 600)
-            {
-                gameOver = true;
-            }
-
+            gameOverLogic();
             
         }
+
+
         public void drawCounter()
         {
             // Draw this niceeee pot of gold in the beautiful top left hand corner of our screen please and thank you
@@ -102,6 +94,8 @@ namespace MohawkGame2D
             Text.Draw($"You Have Collected {goldCounter} gold!", 80, 20);
             
         }
+
+
         private void CheckPlatformCollision()
         {
 
@@ -141,7 +135,8 @@ namespace MohawkGame2D
             }
         }
 
-        private void updateClouds()
+
+        private void updateClouds() // Drawing the Clouds
         {
             for (int i = 0; i < clouds.Length; i++)
             {
@@ -157,7 +152,8 @@ namespace MohawkGame2D
 
         }
         
-        private void updateCoins()
+
+        private void updateCoins() // Drawing the Coins and Doing the coin counter
         {
             foreach (var coin in goldCoins)
             {
@@ -172,7 +168,15 @@ namespace MohawkGame2D
 
         }
 
+        private void gameOverLogic() // Game Over ! 
+        {
+            // Trying simple Game over Logic like if the player falls of the screen or the coins are all collected? 
+            if (player.position.Y > 600)
+            {
+                gameOver = true;
+            }
 
+        }
     }
 }
 

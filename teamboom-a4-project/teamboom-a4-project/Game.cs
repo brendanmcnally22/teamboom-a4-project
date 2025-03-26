@@ -14,7 +14,8 @@ namespace MohawkGame2D
         Cloud[] clouds = new Cloud[12];   // Array to hold clouds
         GoldCoin[] goldCoins;
         Player player; // Player instance :D 
-        Vector2 cameraOffset;
+        int goldCounter = 0; 
+   
 
         float backgroundSpeed = 0f;
         float backgroundX = 0;
@@ -41,7 +42,9 @@ namespace MohawkGame2D
 
             goldCoins = new GoldCoin[]
             {
-                new GoldCoin(new Vector2(200,340))
+                new GoldCoin(new Vector2(200,340)),
+                new GoldCoin(new Vector2(250,300)),
+                new GoldCoin(new Vector2(230,400))
             };
         }
 
@@ -75,13 +78,23 @@ namespace MohawkGame2D
                  if (!coin.collected && CollisionHelper.isColliding(player.position,player.GetSize(), coin.position, coin.GetSize()))
                 {
                     coin.collected = true;
-                    
+                    goldCounter++;
+                    Console.WriteLine("You've Collected one Gold!");
                 }
                 coin.renderCoin();
             }
 
+
             
      
+        }
+        public void drawCounter()
+        {
+            // Draw this niceeee pot of gold in the beautiful top left hand corner of our screen please and thank you
+            Vector2 potPos = new Vector2(10, 10);
+            Graphics.Draw(PotofGold, potPos);
+            // I'll do the coin counter underneath here 
+
         }
     }
 

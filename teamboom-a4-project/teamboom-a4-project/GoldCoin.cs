@@ -16,7 +16,7 @@ namespace MohawkGame2D
         public GoldCoin(Vector2 pos)
         {
             position = pos;
-            texture = Graphics.LoadTexture("../../../../../Assets/Graphics/GoldCoin.png");
+            texture = Graphics.LoadTexture("../../../../../Assets/Graphics/GoldCoin.png"); // Taija I found your gold issue :D 
             width = texture.Width;
             height = texture.Height;
         }

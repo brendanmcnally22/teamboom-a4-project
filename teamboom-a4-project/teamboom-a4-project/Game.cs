@@ -13,7 +13,8 @@ namespace MohawkGame2D
         float cameraSpeed = 1f;
         Cloud[] clouds = new Cloud[12];   // Array to hold clouds
         Player player; // Player instance :D 
-        
+        Vector2 cameraOffset;
+
         float backgroundSpeed = 0f;
         float backgroundX = 0;
 

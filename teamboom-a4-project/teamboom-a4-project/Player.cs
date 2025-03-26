@@ -16,11 +16,38 @@ namespace MohawkGame2D;
     public Texture2D texture;
     public float width;
     public float height;
-    
+    public bool onPlatform = false; 
 
-        public void Render(float x, float y)
+    public Player(Vector2 startPosition, Texture2D playerTexture)
     {
-        // Put asset loading here
+        position = startPosition;
+        texture = playerTexture;
+        width = texture.Width; 
+        height = texture.Height;
+        velocity = Vector2.Zero; 
+
+        // Yeah I'm cooking here, This is looking very efficient! 
+        // Now I will try to create a Player Movement.
+
+    }
+
+    public void playerMovement()
+    {
+        if (Input.IsKeyboardKeyDown(KeyboardInput.A))
+        {
+            position.X -= speed; 
+        }
+        if (Input.IsKeyboardKeyDown(KeyboardInput.D))
+        {
+            position.X += speed;
+        }
+
+        if (onPlatform && Input.IsKeyboardKeyDown(KeyboardInput.Space))
+        {
+            velocity.Y = -10f;
+            onPlatform = false;
+        }
+
     }
 
     }

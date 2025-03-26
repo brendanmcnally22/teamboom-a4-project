@@ -33,7 +33,7 @@ namespace MohawkGame2D;
 
     public void playerMovement()
     {
-        if (Input.IsKeyboardKeyDown(KeyboardInput.A))
+        if (Input.IsKeyboardKeyDown(KeyboardInput.A || Input.))
         {
             position.X -= speed; 
         }

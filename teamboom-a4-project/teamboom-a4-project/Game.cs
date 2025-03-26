@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Transactions;
 
@@ -96,7 +97,9 @@ namespace MohawkGame2D
             Vector2 potPos = new Vector2(10, 10);
             Graphics.Draw(PotofGold, potPos);
             // I'll do the coin counter underneath here 
-
+         
+            Text.Draw($"You Have Collected {goldCounter} gold!", 80, 20);
+            
         }
         private void CheckPlatformCollision()
         {

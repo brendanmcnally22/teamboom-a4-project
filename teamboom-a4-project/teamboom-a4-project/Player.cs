@@ -16,7 +16,10 @@ namespace MohawkGame2D;
     public Texture2D texture;
     public float width;
     public float height;
-    public bool onPlatform = false; 
+    public bool onPlatform = false;
+
+    private float jumpTimer = 0f; // Jump Timer 
+    private const float jumpCooldown = 0.5f;
 
     public Player(Vector2 startPosition, Texture2D playerTexture)
     {
@@ -46,15 +49,26 @@ namespace MohawkGame2D;
             position.X += speed;
         }
 
-        if (onPlatform && Input.IsKeyboardKeyPressed(KeyboardInput.Space) || Input.IsControllerButtonPressed(0,ControllerButton.LeftTrigger1)) // basically saying JUMP Only if your on the PLATFORM 
+        if (onPlatform && jumpTimer <= 0 && (Input.IsKeyboardKeyPressed(KeyboardInput.Space) || Input.IsControllerButtonPressed(0,ControllerButton.LeftTrigger1))) // basically saying JUMP Only if your on the PLATFORM 
         {
             velocity.Y = -7f;
+            jumpTimer = jumpCooldown; 
+            onPlatform = false;
            
         }
 
         velocity.Y += 0.3f; // Applying Gravity
-
         position += velocity; // Updating the Position
+
+        
+        if(jumpTimer >0)
+        {
+
+            jumpTimer -= 0.016f;
+            if (jumpTimer < 0)
+                jumpTimer = 0;
+        }
+
 
     }
 

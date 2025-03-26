@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Numerics;
-using System.Reflection.Emit;
-using System.Runtime.InteropServices;
-using System.Transactions;
 
 namespace MohawkGame2D
 {
@@ -12,12 +9,13 @@ namespace MohawkGame2D
         Texture2D BGS = Graphics.LoadTexture("../../../../../Assets/Graphics/BGS.png");
         Texture2D PotofGold = Graphics.LoadTexture("../../../../../Assets/Graphics/PotofGold.png");
 
-        Vector2 cameraPosition = Vector2.Zero;
-        float cameraSpeed = 1f;
+        Vector2 cameraPosition = Vector2.Zero; 
+        float cameraSpeed = 1f; 
         Cloud[] clouds = new Cloud[12];   // Array to hold clouds
-        GoldCoin[] goldCoins;
+        GoldCoin[] goldCoins; // Gold Coins instance
         Player player; // Player instance :D 
-        int goldCounter = 0;
+        int goldCounter = 0; // Gold Counter
+        bool gameOver = false;
 
 
         float backgroundSpeed = 0f;
@@ -29,7 +27,7 @@ namespace MohawkGame2D
             Window.SetSize(800, 600);
 
 
-            clouds = new Cloud[]
+            clouds = new Cloud[] // Cloud Instances and Positions on the screen
             {
             new Cloud(new Vector2(20, 200), Cloud.cloudInstance1),
             new Cloud(new Vector2(175, 300), Cloud.cloudInstance2),
@@ -49,45 +47,48 @@ namespace MohawkGame2D
                 new GoldCoin(new Vector2(250,300)),
                 new GoldCoin(new Vector2(230,400))
             };
+
+            goldCounter = 0;
+            gameOver = false;
         }
 
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
+           
+
+            if (gameOver)
+            {
+                Window.ClearBackground(Color.Red);
+                Text.Draw("Game Over! Press R or Square to Restart!", new Vector2(70,250));
+                if (Input.IsKeyboardKeyDown(KeyboardInput.R))
+                {
+                    Setup();
+                }
+                return;
+            }
+
+
             Graphics.Draw(BGS, backgroundX, 0);
             backgroundX += backgroundSpeed;
             cameraPosition.X += cameraSpeed;
 
 
-            for (int i = 0; i < clouds.Length; i++)
-            {
-                clouds[i].position.X -= cameraSpeed;
-
-                if (clouds[i].position.X < -100)
-                {
-                    clouds[i].position.X = 800;
-                }
-
-                clouds[i].Render();
-            }
-
-
+            updateClouds();
+            updateCoins();
+           
             player.playerMovement();
             player.renderPlayer();
             drawCounter();
             CheckPlatformCollision();
 
-            foreach (var coin in goldCoins)
-            {
-                if (!coin.collected && CollisionHelper.isColliding(player.position, player.GetSize(), coin.position, coin.GetSize()))
-                {
-                    coin.collected = true;
-                    goldCounter++;
-                    Console.WriteLine($"you now have {goldCounter} gold");
-                }
-                coin.renderCoin();
-            }
+       
 
+            // Trying simple Game over Logic like if the player falls of the screen or the coins are all collected? 
+            if (player.position.Y > 600)
+            {
+                gameOver = true;
+            }
 
             
         }
@@ -138,6 +139,37 @@ namespace MohawkGame2D
                     }
                 }
             }
+        }
+
+        private void updateClouds()
+        {
+            for (int i = 0; i < clouds.Length; i++)
+            {
+                clouds[i].position.X -= cameraSpeed;
+
+                if (clouds[i].position.X < -100)
+                {
+                    clouds[i].position.X = 800;
+                }
+
+                clouds[i].Render();
+            }
+
+        }
+        
+        private void updateCoins()
+        {
+            foreach (var coin in goldCoins)
+            {
+                if (!coin.collected && CollisionHelper.isColliding(player.position, player.GetSize(), coin.position, coin.GetSize()))
+                {
+                    coin.collected = true;
+                    goldCounter++;
+                    Console.WriteLine($"you now have {goldCounter} gold");
+                }
+                coin.renderCoin();
+            }
+
         }
 
 

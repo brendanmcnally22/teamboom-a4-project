@@ -41,7 +41,7 @@ namespace MohawkGame2D
 
             goldCoins = new GoldCoin[]
             {
-                new GoldCoin(new Vector2(150,180))
+                new GoldCoin(new Vector2(200,340))
             };
         }
 
@@ -70,7 +70,15 @@ namespace MohawkGame2D
             player.renderPlayer();
             
 
-           
+           foreach (var coin in goldCoins)
+            {
+                 if (!coin.collected && CollisionHelper.isColliding(player.position,player.GetSize(), coin.position, coin.GetSize()))
+                {
+                    coin.collected = true;
+                    
+                }
+                coin.renderCoin();
+            }
 
             
      

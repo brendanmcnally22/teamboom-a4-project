@@ -52,9 +52,14 @@ namespace MohawkGame2D;
 
         position += velocity; // Updating the Position
 
-
-
     }
+
+    public Vector2 GetSize()
+    {
+        return new Vector2(width, height); // Returns the size of the player for our collision detection :D 
+    }
+
+
     public void renderPlayer() // Function To render the player in Game.CS 
     {
         Graphics.Draw(texture, position); // Drawing player using the texture and updated position

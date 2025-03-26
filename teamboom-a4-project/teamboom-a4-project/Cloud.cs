@@ -64,6 +64,11 @@ namespace MohawkGame2D
         {
             Graphics.Draw(texture, position);
         }
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(width, height);
+        }
     }
 }
 

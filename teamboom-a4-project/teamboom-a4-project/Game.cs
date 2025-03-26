@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Transactions;
 
 namespace MohawkGame2D
 {
@@ -14,8 +16,8 @@ namespace MohawkGame2D
         Cloud[] clouds = new Cloud[12];   // Array to hold clouds
         GoldCoin[] goldCoins;
         Player player; // Player instance :D 
-        int goldCounter = 0; 
-   
+        int goldCounter = 0;
+
 
         float backgroundSpeed = 0f;
         float backgroundX = 0;
@@ -25,7 +27,7 @@ namespace MohawkGame2D
             Window.SetTitle("LEAPrechaun");
             Window.SetSize(800, 600);
 
-            
+
             clouds = new Cloud[]
             {
             new Cloud(new Vector2(20, 200), Cloud.cloudInstance1),
@@ -51,42 +53,42 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
-            Graphics.Draw(BGS, backgroundX, 0); 
+            Graphics.Draw(BGS, backgroundX, 0);
             backgroundX += backgroundSpeed;
             cameraPosition.X += cameraSpeed;
 
-            
+
             for (int i = 0; i < clouds.Length; i++)
             {
                 clouds[i].position.X -= cameraSpeed;
-               
-                if (clouds[i].position.X < -100)  
+
+                if (clouds[i].position.X < -100)
                 {
-                    clouds[i].position.X = 800;  
+                    clouds[i].position.X = 800;
                 }
-                
+
                 clouds[i].Render();
             }
 
 
             player.playerMovement();
             player.renderPlayer();
-            
+            drawCounter();
+            CheckPlatformCollision();
 
-           foreach (var coin in goldCoins)
+            foreach (var coin in goldCoins)
             {
-                 if (!coin.collected && CollisionHelper.isColliding(player.position,player.GetSize(), coin.position, coin.GetSize()))
+                if (!coin.collected && CollisionHelper.isColliding(player.position, player.GetSize(), coin.position, coin.GetSize()))
                 {
                     coin.collected = true;
                     goldCounter++;
-                    Console.WriteLine("You've Collected one Gold!");
+                    Console.WriteLine($"you now have {goldCounter} gold");
                 }
                 coin.renderCoin();
             }
 
 
             
-     
         }
         public void drawCounter()
         {
@@ -96,9 +98,44 @@ namespace MohawkGame2D
             // I'll do the coin counter underneath here 
 
         }
+        private void CheckPlatformCollision()
+        {
+
+            float marginX = 5f; // Trying to define the margins to shrink the collision box
+            float marginY = 5f; 
+
+            foreach (Cloud platform in clouds)
+            {
+           
+                Vector2 adjustedPlatformPos = new Vector2(platform.position.X + marginX, platform.position.Y +marginY);
+                Vector2 adjustedPlatformSize = new Vector2(platform.width - 2 * marginX, platform.GetSize().Y - 2 * marginY);
+
+
+                if (CollisionHelper.isColliding(player.position, new Vector2(player.width, player.height),
+                                                adjustedPlatformPos,adjustedPlatformSize))
+                {
+                    
+                    float playerBottom = player.position.Y + player.height;
+                    float playerTop = player.position.Y;
+                    // Calculate platform top.
+                    float platTop = adjustedPlatformPos.Y;
+
+
+                    // and the player's top is still above the platform's top, we consider it a top collision.
+                    if (playerBottom >= platTop && playerTop < platTop)
+                    {
+                        // Snap lep to the top of the platform! 
+                        player.position = new Vector2(player.position.X, platTop - player.height);
+                        player.velocity = new Vector2(player.velocity.X, 0);
+                        player.onPlatform = true;
+                       
+                    }
+                }
+            }
+        }
+
+
     }
-
-
 }
 
 

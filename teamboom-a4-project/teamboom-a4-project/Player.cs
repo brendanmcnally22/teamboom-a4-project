@@ -44,8 +44,8 @@ namespace MohawkGame2D;
 
         if (onPlatform && Input.IsKeyboardKeyDown(KeyboardInput.Space)) // basically saying JUMP Only if your on the PLATFORM 
         {
-            velocity.Y = -10f;
-            onPlatform = false;
+            velocity.Y = -5f;
+           
         }
 
         velocity.Y += 0.3f; // Applying Gravity

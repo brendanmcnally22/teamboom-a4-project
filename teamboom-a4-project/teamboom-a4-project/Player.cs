@@ -26,9 +26,9 @@ namespace MohawkGame2D;
         height = texture.Height;
         velocity = Vector2.Zero; 
 
-        // Yeah I'm cooking here, This is looking very efficient! 
-        // Now I will try to create a Player Movement.
-
+        // I dont Know what happened to my original player class (I thought It was merged in here)
+        // :( It is still in my branch, but it is to late to merge now. 
+        // Its ok this one will do, And We can make it work :) 
     }
 
     public void playerMovement()

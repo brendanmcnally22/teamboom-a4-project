@@ -12,6 +12,7 @@ namespace MohawkGame2D
         Vector2 cameraPosition = Vector2.Zero;
         float cameraSpeed = 1f;
         Cloud[] clouds = new Cloud[12];   // Array to hold clouds
+        Player player; // Player instance :D 
         
         float backgroundSpeed = 0f;
         float backgroundX = 0;
@@ -33,16 +34,17 @@ namespace MohawkGame2D
             new Cloud(new Vector2(525, 400), Cloud.cloudInstance1),
             new Cloud(new Vector2(500, 200), Cloud.cloudInstance1)
             };
+
+            player = new Player(new Vector2(100, 100), Lep); // Creating "LEP!" (the goaat)
         }
 
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
-            Graphics.Draw(BGS, backgroundX, 0);
-            
+            Graphics.Draw(BGS, backgroundX, 0); 
             backgroundX += backgroundSpeed;
-
             cameraPosition.X += cameraSpeed;
+
             
             for (int i = 0; i < clouds.Length; i++)
             {
@@ -56,7 +58,10 @@ namespace MohawkGame2D
                 clouds[i].Render();
             }
 
-            Graphics.Draw(Lep, 100, 100);  
+
+            player.playerMovement();
+
+            Graphics.Draw(Lep, player.position); // Drawing player using the texture and updated position
         }
     }
 

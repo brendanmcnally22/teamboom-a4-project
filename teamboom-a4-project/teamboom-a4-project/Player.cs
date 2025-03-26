@@ -47,7 +47,7 @@ namespace MohawkGame2D;
             velocity.Y = -10f;
             onPlatform = false;
         }
-
+        
     }
 
     }

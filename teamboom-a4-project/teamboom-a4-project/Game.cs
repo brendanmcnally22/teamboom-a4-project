@@ -15,6 +15,7 @@ namespace MohawkGame2D
         GoldCoin[] goldCoins; // Gold Coins instance
         Player player; // Player instance :D 
         int goldCounter = 0; // Gold Counter
+        new Color menuBackground = new Color(9, 61, 38);
         bool menuScreen = true;
         bool gameOver = false;
 
@@ -59,6 +60,12 @@ namespace MohawkGame2D
             Graphics.Draw(BGS, backgroundX, 0);
             backgroundX += backgroundSpeed;
             cameraPosition.X += cameraSpeed;
+
+            if (menuScreen)
+            {
+                Window.ClearBackground(menuBackground);
+                return;
+            }
 
             if (gameOver)
             {
@@ -177,6 +184,8 @@ namespace MohawkGame2D
             }
 
         }
+        
+        private void 
     }
 }
 

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Numerics;
 
-
 namespace MohawkGame2D
 {
-    class GoldCoin
+    public class GoldCoin
     {
-        Texture2D Coin =
-              Graphics.LoadTexture("../../../../../Assets/Graphics/Coin.png");
+        public Texture2D texture = Graphics.LoadTexture("../../../../../Assets/Graphics/GoldCoin.png");
     }
 }

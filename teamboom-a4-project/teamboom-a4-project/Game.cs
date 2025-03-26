@@ -11,8 +11,8 @@ namespace MohawkGame2D
 
         Vector2 cameraPosition = Vector2.Zero;
         float cameraSpeed = 1f;
-        Cloud[] clouds = new Cloud[12];   // Array to hold clouds
-        
+        Cloud[] clouds = new Cloud[13];   
+
         float backgroundSpeed = 0f;
         float backgroundX = 0;
 
@@ -21,7 +21,7 @@ namespace MohawkGame2D
             Window.SetTitle("LEAPrechaun");
             Window.SetSize(800, 600);
 
-            
+
             clouds = new Cloud[]
             {
             new Cloud(new Vector2(20, 200), Cloud.cloudInstance1),
@@ -33,13 +33,11 @@ namespace MohawkGame2D
             new Cloud(new Vector2(525, 400), Cloud.cloudInstance1),
             new Cloud(new Vector2(500, 200), Cloud.cloudInstance1),
             new Cloud(new Vector2(700, 500), Cloud.cloudInstance2),
-            new Cloud(new Vector2(230, 125), Cloud.cloudInstance2),
+            new Cloud(new Vector2(230, 140), Cloud.cloudInstance2),
             new Cloud(new Vector2(665, 300), Cloud.cloudInstance1),
-            new Cloud(new Vector2(630, 100), Cloud.cloudInstance1),
-            new Cloud(new Vector2(425, 75), Cloud.cloudInstance1),
+            new Cloud(new Vector2(690, 135), Cloud.cloudInstance1),
             new Cloud(new Vector2(800, 400), Cloud.cloudInstance1),
-            new Cloud(new Vector2(765, 175), Cloud.cloudInstance1),
-            new Cloud(new Vector2(800, 75), Cloud.cloudInstance1),
+           
             };
         }
 
@@ -47,29 +45,37 @@ namespace MohawkGame2D
         {
             Window.ClearBackground(Color.OffWhite);
             Graphics.Draw(BGS, backgroundX, 0);
-            
+
             backgroundX += backgroundSpeed;
 
             cameraPosition.X += cameraSpeed;
-            
+
             for (int i = 0; i < clouds.Length; i++)
             {
                 clouds[i].position.X -= cameraSpeed;
-               
-                if (clouds[i].position.X < -100)  
+
+                if (clouds[i].position.X < -100)
                 {
-                    clouds[i].position.X = 800;  
+                    clouds[i].position.X = 800;
                 }
-                
+
                 clouds[i].Render();
             }
 
-            Graphics.Draw(Lep, 100, 100);  
+            Graphics.Draw(Lep, 100, 100);
         }
     }
 
 
 }
+
+
+
+
+
+
+
+
 
 
 

@@ -28,6 +28,8 @@ namespace MohawkGame2D
         public static Cloud cloudInstance10;
         public static Cloud cloudInstance11;
         public static Cloud cloudInstance12;
+        public static Cloud cloudInstance13;
+
         static Cloud()
         {
             cloudInstance1 = new Cloud(96, cloudTexture1);
@@ -42,6 +44,7 @@ namespace MohawkGame2D
             cloudInstance10 = new Cloud(96, cloudTexture2);
             cloudInstance11 = new Cloud(96, cloudTexture1);
             cloudInstance12 = new Cloud(96, cloudTexture2);
+            cloudInstance13 = new Cloud(96, cloudTexture2);
         }
 
         Cloud(float width, Texture2D texture)

@@ -31,15 +31,7 @@ namespace MohawkGame2D
             new Cloud(new Vector2(330,250), Cloud.cloudInstance2),
             new Cloud(new Vector2(400, 450), Cloud.cloudInstance2),
             new Cloud(new Vector2(525, 400), Cloud.cloudInstance1),
-            new Cloud(new Vector2(500, 200), Cloud.cloudInstance1),
-            new Cloud(new Vector2(700, 500), Cloud.cloudInstance2),
-            new Cloud(new Vector2(230, 125), Cloud.cloudInstance2),
-            new Cloud(new Vector2(665, 300), Cloud.cloudInstance1),
-            new Cloud(new Vector2(630, 100), Cloud.cloudInstance1),
-            new Cloud(new Vector2(425, 75), Cloud.cloudInstance1),
-            new Cloud(new Vector2(800, 400), Cloud.cloudInstance1),
-            new Cloud(new Vector2(765, 175), Cloud.cloudInstance1),
-            new Cloud(new Vector2(800, 75), Cloud.cloudInstance1),
+            new Cloud(new Vector2(500, 200), Cloud.cloudInstance1)
             };
         }
 

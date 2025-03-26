@@ -102,8 +102,12 @@ namespace MohawkGame2D
         {
 
             float marginX = 5f; // Trying to define the margins to shrink the collision box
-            float marginY = 10f; 
+            float marginY = 40f; 
             float verticalSnapTolerance = 10f;
+            float dynamicTolerance = verticalSnapTolerance + player.velocity.Y * 0.5f; // Ok this is literally awesome ngl here im gonna use a dynamic tolerance based on fall speed,
+                                                                                       // basically if the player is falling fast or velocity.Y is larger the tolerance INCREASES, 
+                                                                                       // making it more likely that the collision will be caught EVEN IF the pen depth is bigger.
+
 
             foreach (Cloud platform in clouds)
             {
@@ -123,7 +127,7 @@ namespace MohawkGame2D
 
 
                // Trying a different way of collision to make it more smooth hopefully
-                    if (player.velocity.Y > 0 && diff >= 0 && diff <= verticalSnapTolerance)
+                    if (player.velocity.Y > 0 && diff >= 0 && diff <= dynamicTolerance)
                     {
                         player.position = new Vector2(player.position.X, platTop - player.height);
                         player.velocity = new Vector2(player.velocity.X, 0);

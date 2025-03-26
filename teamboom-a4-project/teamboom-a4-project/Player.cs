@@ -53,9 +53,13 @@ namespace MohawkGame2D;
         position += velocity; // Updating the Position
 
 
-        
-    }
 
     }
+    public void renderPlayer() // Function To render the player in Game.CS 
+    {
+        Graphics.Draw(texture, position); // Drawing player using the texture and updated position
+    }
+
+}
 
 

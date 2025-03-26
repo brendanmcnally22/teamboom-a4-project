@@ -60,8 +60,8 @@ namespace MohawkGame2D
 
 
             player.playerMovement();
-
-            Graphics.Draw(Lep, player.position); // Drawing player using the texture and updated position
+            player.renderPlayer();
+     
         }
     }
 

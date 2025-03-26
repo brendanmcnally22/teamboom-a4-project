@@ -24,6 +24,11 @@ namespace MohawkGame2D
         public void renderCoin()
         {
             // Only want to render the coin if it hasn't been collected
+            if (!collected)
+            {
+                Graphics.Draw(texture, position);
+            }
         }
+
     }
 }

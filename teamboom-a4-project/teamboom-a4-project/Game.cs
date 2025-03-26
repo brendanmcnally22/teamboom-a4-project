@@ -102,33 +102,32 @@ namespace MohawkGame2D
         {
 
             float marginX = 5f; // Trying to define the margins to shrink the collision box
-            float marginY = 5f; 
+            float marginY = 10f; 
+            float verticalSnapTolerance = 10f;
 
             foreach (Cloud platform in clouds)
             {
-           
+                //Shifting and Reducing the Collision box to try make it less jarring and more smooth
                 Vector2 adjustedPlatformPos = new Vector2(platform.position.X + marginX, platform.position.Y +marginY);
-                Vector2 adjustedPlatformSize = new Vector2(platform.width - 2 * marginX, platform.GetSize().Y - 2 * marginY);
+                Vector2 adjustedPlatformSize = new Vector2(platform.width - 2 * marginX, platform.GetSize().Y - marginY);
 
 
-                if (CollisionHelper.isColliding(player.position, new Vector2(player.width, player.height),
+                if (CollisionHelper.isColliding(
+                    player.position, new Vector2(player.width, player.height),
                                                 adjustedPlatformPos,adjustedPlatformSize))
                 {
                     
                     float playerBottom = player.position.Y + player.height;
-                    float playerTop = player.position.Y;
-                    // Calculate platform top.
                     float platTop = adjustedPlatformPos.Y;
+                    float diff = playerBottom - platTop;
 
 
-                    // and the player's top is still above the platform's top, we consider it a top collision.
-                    if (playerBottom >= platTop && playerTop < platTop)
+               // Trying a different way of collision to make it more smooth hopefully
+                    if (player.velocity.Y > 0 && diff >= 0 && diff <= verticalSnapTolerance)
                     {
-                        // Snap lep to the top of the platform! 
                         player.position = new Vector2(player.position.X, platTop - player.height);
                         player.velocity = new Vector2(player.velocity.X, 0);
                         player.onPlatform = true;
-                       
                     }
                 }
             }

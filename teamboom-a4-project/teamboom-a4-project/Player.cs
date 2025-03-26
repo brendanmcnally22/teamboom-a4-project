@@ -42,7 +42,7 @@ namespace MohawkGame2D;
             position.X += speed;
         }
 
-        if (onPlatform && Input.IsKeyboardKeyDown(KeyboardInput.Space)) // basically saying JUMP Only if your on the PLATFORM 
+        if (onPlatform && Input.IsKeyboardKeyPressed(KeyboardInput.Space)) // basically saying JUMP Only if your on the PLATFORM 
         {
             velocity.Y = -5f;
            

@@ -11,13 +11,15 @@ namespace MohawkGame2D
         Texture2D PotofGold = Graphics.LoadTexture("../../../../../Assets/Graphics/PotofGold.png");
         Texture2D StartScreen = Graphics.LoadTexture("../../../../../Assets/Graphics/StartScreen.png");
         Texture2D WinnerScreen = Graphics.LoadTexture("../../../../../Assets/Graphics/WinnerScreen.png");
-
+        Texture2D LoserScreen = Graphics.LoadTexture("../../../../../Assets/Graphics/LoserScreen.png");
+        
         Vector2 cameraPosition = Vector2.Zero; 
         float cameraSpeed = 1f; 
         Cloud[] clouds = new Cloud[12];   // Array to hold clouds
         GoldCoin[] goldCoins; // Gold Coins instance
         Player player; // Player instance :D 
         int goldCounter = 0; // Gold Counter
+        Color DarkGreen = new Color (29, 96, 23);
         
         
         bool menuScreen = true;
@@ -34,6 +36,8 @@ namespace MohawkGame2D
         {
             Window.SetTitle("LEAPrechaun");
             Window.SetSize(800, 600);
+            
+            
 
             backgroundMusic = Audio.LoadMusic("../../../../../Assets/Audio/GameSong.MP3");
             Audio.Play(backgroundMusic);
@@ -238,16 +242,13 @@ namespace MohawkGame2D
         private void gameOverScreen()
         {
             Window.ClearBackground(Color.OffWhite);
-            Graphics.Draw(WinnerScreen, 0, 0);
+            Graphics.Draw(LoserScreen, 0, 0);
 
-            Text.Color = Color.Black;
-            Text.Draw("Game Over! Press R or X to Restart!", new Vector2(70, 250));
+            Text.Color = (DarkGreen);
+            
+            Text.Draw("Press R to Restart!", new Vector2(270, 550));
             
             
-            //updateClouds();// Goated clouds! They look so good 
-            drawCounter(); // Display player end stats aswell like goated or what? 
-           
-
             if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsKeyboardKeyPressed(KeyboardInput.X) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft))
                 {
              // Restart the game pls
@@ -262,8 +263,10 @@ namespace MohawkGame2D
             
             Graphics.Draw(WinnerScreen, 0, 0);
             
-            Text.Draw("Press R or X to restart!", new Vector2(150, 250));
-            Text.Draw($"You Collected {goldCounter} Gold!", new Vector2(150, 100));
+            Text.Draw("Press R to restart!", new Vector2(265, 550));
+            Text.Color = Color.White;
+            Text.Draw($"You Collected {goldCounter} Gold!", new Vector2(255, 520));
+            Text.Color = Color.White;
 
             if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsKeyboardKeyPressed(KeyboardInput.X) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft))
             {

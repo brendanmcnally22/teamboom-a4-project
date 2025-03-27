@@ -26,11 +26,15 @@ namespace MohawkGame2D
         float backgroundSpeed = 0f;
         float backgroundX = 0;
 
+        Music backgroundMusic;
+
         public void Setup()
         {
             Window.SetTitle("LEAPrechaun");
             Window.SetSize(800, 600);
 
+            backgroundMusic = Audio.LoadMusic("../../../../Assets/Audio/GameSong.MP3");
+            Audio.Play(backgroundMusic);
 
             clouds = new Cloud[]
                     {
@@ -54,9 +58,9 @@ namespace MohawkGame2D
 
             goldCoins = new GoldCoin[] // Where we draw the Coins 
             {
-                new GoldCoin(new Vector2(200,340)),
-                new GoldCoin(new Vector2(250,300)),
-                new GoldCoin(new Vector2(230,400))
+                new GoldCoin(new Vector2(500, 200)),
+                new GoldCoin(new Vector2(400, 450)),
+                new GoldCoin(new Vector2(690, 135))
             };
 
             goldCounter = 0;

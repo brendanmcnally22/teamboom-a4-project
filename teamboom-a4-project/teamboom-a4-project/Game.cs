@@ -58,9 +58,19 @@ namespace MohawkGame2D
 
             goldCoins = new GoldCoin[] // Where we draw the Coins 
             {
-                new GoldCoin(new Vector2(500, 200)),
-                new GoldCoin(new Vector2(400, 450)),
-                new GoldCoin(new Vector2(690, 135))
+            new GoldCoin(new Vector2(55, 175)),
+            new GoldCoin(new Vector2(210, 275)),
+            new GoldCoin(new Vector2(135, 425)),
+            new GoldCoin(new Vector2(310, 525)),
+            new GoldCoin(new Vector2(365, 225)),
+            new GoldCoin(new Vector2(435, 425)),
+            new GoldCoin(new Vector2(560, 375)),
+            new GoldCoin(new Vector2(535, 175)),
+            new GoldCoin(new Vector2(735, 475)),
+            new GoldCoin(new Vector2(265, 115)),
+            new GoldCoin(new Vector2(700, 275)),
+            new GoldCoin(new Vector2(725, 110)),
+            new GoldCoin(new Vector2(835, 375))
             };
 
             goldCounter = 0;

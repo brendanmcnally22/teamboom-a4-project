@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Numerics;
 
 namespace MohawkGame2D
@@ -8,7 +9,8 @@ namespace MohawkGame2D
         Texture2D Lep = Graphics.LoadTexture("../../../../../Assets/Graphics/Lep.png");
         Texture2D BackgroundScreen = Graphics.LoadTexture("../../../../../Assets/Graphics/BackgroundScreen.png");
         Texture2D PotofGold = Graphics.LoadTexture("../../../../../Assets/Graphics/PotofGold.png");
-        Texture2D StartScreen = Graphics.LoadTexture("../../../../Assets/Graphics/StartScreen.png");
+        Texture2D StartScreen = Graphics.LoadTexture("../../../../../Assets/Graphics/StartScreen.png");
+        
 
         Vector2 cameraPosition = Vector2.Zero; 
         float cameraSpeed = 1f; 
@@ -33,7 +35,7 @@ namespace MohawkGame2D
             Window.SetTitle("LEAPrechaun");
             Window.SetSize(800, 600);
 
-            backgroundMusic = Audio.LoadMusic("../../../../Assets/Audio/GameSong.MP3");
+            backgroundMusic = Audio.LoadMusic("../../../../../Assets/Audio/GameSong.MP3");
             Audio.Play(backgroundMusic);
 
             clouds = new Cloud[]
@@ -83,7 +85,7 @@ namespace MohawkGame2D
             Graphics.Draw(BackgroundScreen, backgroundX, 0);
             backgroundX += backgroundSpeed;
             cameraPosition.X += cameraSpeed;
-
+            
             if (menuScreen)
             {
                 mainMenuLogic();
@@ -131,8 +133,6 @@ namespace MohawkGame2D
             float dynamicTolerance = verticalSnapTolerance + player.velocity.Y * 0.5f; // Ok this is literally awesome ngl here im gonna use a dynamic tolerance based on fall speed,
                                                                                        // basically if the player is falling fast or velocity.Y is larger the tolerance INCREASES, 
                                                                                        // making it more likely that the collision will be caught EVEN IF the pen depth is bigger.
-
-
             foreach (Cloud platform in clouds)
             {
                 //Shifting and Reducing the Collision box to try make it less jarring and more smooth
@@ -192,6 +192,7 @@ namespace MohawkGame2D
                 
                 if (!coin.collected && CollisionHelper.isColliding(player.position, player.GetSize(), coin.position, coin.GetSize()))
                 {
+                    coin.MakeNoise();
                     coin.collected = true;
                     goldCounter++;
                    
@@ -217,24 +218,17 @@ namespace MohawkGame2D
                 
             }
 
-            }
+        }
 
 
         private void mainMenuLogic()
         {
             Graphics.Draw(StartScreen, 0, 0);
 
-            Text.Color = Color.White;
+            bool IsClicking = Input.IsMouseButtonPressed(MouseInput.Left);
+            bool IsOverPlayButton = Input.GetMousePosition().X > 272 && Input.GetMousePosition().Y > 374 && Input.GetMousePosition().X < 272 + 249 && Input.GetMousePosition().Y < 374 + 55;
 
-            Text.Size = 72;
-            Text.Draw("LEAPrachaun", new Vector2(200, 100));
-            Text.Size = 32;
-            Text.Draw("Press Enter or X to begin!", new Vector2(200, 170));
-          
-
-            updateClouds();
-
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.Enter) || Input.IsKeyboardKeyPressed(KeyboardInput.X) || (Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft)))
+            if ((IsClicking && IsOverPlayButton) || Input.IsKeyboardKeyPressed(KeyboardInput.Enter) || Input.IsKeyboardKeyPressed(KeyboardInput.X) || (Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft)))
             {
                 menuScreen = false;
                 Setup();

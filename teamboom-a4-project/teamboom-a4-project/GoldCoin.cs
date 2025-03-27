@@ -12,6 +12,9 @@ namespace MohawkGame2D
         public Texture2D texture;
         public float width;
         public float height;
+        
+        Sound CoinSound = Audio.LoadSound("../../../../../Assets/Audio/CoinSound.MP3");
+
 
         public GoldCoin(Vector2 pos)
         {
@@ -28,6 +31,12 @@ namespace MohawkGame2D
             {
                 Graphics.Draw(texture, position);
             }
+        }
+
+        public void MakeNoise()
+        {
+            Audio.Play(CoinSound);
+            
         }
 
         public Vector2 GetSize()

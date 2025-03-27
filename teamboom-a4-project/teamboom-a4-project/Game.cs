@@ -6,8 +6,9 @@ namespace MohawkGame2D
     public class Game
     {
         Texture2D Lep = Graphics.LoadTexture("../../../../../Assets/Graphics/Lep.png");
-        Texture2D BGS = Graphics.LoadTexture("../../../../../Assets/Graphics/BGS.png");
+        Texture2D BackgroundScreen = Graphics.LoadTexture("../../../../../Assets/Graphics/BackgroundScreen.png");
         Texture2D PotofGold = Graphics.LoadTexture("../../../../../Assets/Graphics/PotofGold.png");
+        Texture2D StartScreen = Graphics.LoadTexture("../../../../Assets/Graphics/StartScreen.png");
 
         Vector2 cameraPosition = Vector2.Zero; 
         float cameraSpeed = 1f; 
@@ -15,7 +16,7 @@ namespace MohawkGame2D
         GoldCoin[] goldCoins; // Gold Coins instance
         Player player; // Player instance :D 
         int goldCounter = 0; // Gold Counter
-        new Color menuBackground = new Color(9, 61, 38);
+        
         new Color winScreenBackground = new Color(0, 167, 53);
         bool menuScreen = true;
         bool gameOver = false;
@@ -31,8 +32,8 @@ namespace MohawkGame2D
             Window.SetSize(800, 600);
 
 
-            clouds = new Cloud[] // Cloud Instances and Positions on the screen
-            {
+            clouds = new Cloud[]
+                    {
             new Cloud(new Vector2(20, 200), Cloud.cloudInstance1),
             new Cloud(new Vector2(175, 300), Cloud.cloudInstance2),
             new Cloud(new Vector2(100, 450), Cloud.cloudInstance1),
@@ -40,8 +41,14 @@ namespace MohawkGame2D
             new Cloud(new Vector2(330,250), Cloud.cloudInstance2),
             new Cloud(new Vector2(400, 450), Cloud.cloudInstance2),
             new Cloud(new Vector2(525, 400), Cloud.cloudInstance1),
-            new Cloud(new Vector2(500, 200), Cloud.cloudInstance1)
-            };
+            new Cloud(new Vector2(500, 200), Cloud.cloudInstance1),
+            new Cloud(new Vector2(700, 500), Cloud.cloudInstance2),
+            new Cloud(new Vector2(230, 140), Cloud.cloudInstance2),
+            new Cloud(new Vector2(665, 300), Cloud.cloudInstance1),
+            new Cloud(new Vector2(690, 135), Cloud.cloudInstance1),
+            new Cloud(new Vector2(800, 400), Cloud.cloudInstance1),
+
+                    };
 
             player = new Player(new Vector2(100, 100), Lep); // Creating "LEP!" (the goaat)
 
@@ -59,7 +66,7 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
-            Graphics.Draw(BGS, backgroundX, 0);
+            Graphics.Draw(BackgroundScreen, backgroundX, 0);
             backgroundX += backgroundSpeed;
             cameraPosition.X += cameraSpeed;
 
@@ -96,7 +103,7 @@ namespace MohawkGame2D
             Graphics.Draw(PotofGold, potPos);
             // I'll do the coin counter underneath here 
          
-            Text.Draw($"You Have Collected {goldCounter} gold!", 80, 20);
+            Text.Draw($"You Have Collected {goldCounter} Gold!", 80, 20);
             
         }
 
@@ -201,7 +208,7 @@ namespace MohawkGame2D
 
         private void mainMenuLogic()
         {
-            Window.ClearBackground(menuBackground);
+            Graphics.Draw(StartScreen, 0, 0);
 
             Text.Color = Color.White;
 

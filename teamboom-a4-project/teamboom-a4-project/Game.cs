@@ -108,7 +108,6 @@ namespace MohawkGame2D
             drawCounter();
             CheckPlatformCollision();
             gameOverLogic();
-            
         }
 
 
@@ -226,8 +225,8 @@ namespace MohawkGame2D
             Graphics.Draw(StartScreen, 0, 0);
 
             bool IsClicking = Input.IsMouseButtonPressed(MouseInput.Left);
-            bool IsOverPlayButton = Input.GetMousePosition().X > 272 && Input.GetMousePosition().Y > 374 && Input.GetMousePosition().X < 272 + 249 && Input.GetMousePosition().Y < 374 + 55;
-
+            bool IsOverPlayButton = CollisionHelper.isColliding(Input.GetMousePosition(), Vector2.Zero, new Vector2(272, 376), new Vector2(249, 55));
+            
             if ((IsClicking && IsOverPlayButton) || Input.IsKeyboardKeyPressed(KeyboardInput.Enter) || Input.IsKeyboardKeyPressed(KeyboardInput.X) || (Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft)))
             {
                 menuScreen = false;

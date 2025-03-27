@@ -234,7 +234,7 @@ namespace MohawkGame2D
 
             updateClouds();
 
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.Enter) || (Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft)))
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.Enter) || Input.IsKeyboardKeyPressed(KeyboardInput.X) || (Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft)))
             {
                 menuScreen = false;
                 Setup();
@@ -250,11 +250,11 @@ namespace MohawkGame2D
             Text.Draw("Game Over! Press R or X to Restart!", new Vector2(70, 250));
             
             
-            updateClouds();// Goated clouds! They look so good 
+            //updateClouds();// Goated clouds! They look so good 
             drawCounter(); // Display player end stats aswell like goated or what? 
            
 
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft))
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsKeyboardKeyPressed(KeyboardInput.X) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft))
                 {
              // Restart the game pls
 
@@ -276,7 +276,7 @@ namespace MohawkGame2D
 
            
 
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft))
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsKeyboardKeyPressed(KeyboardInput.X) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft))
             {
                 menuScreen = true; // Return to the main menu
                 Setup();

@@ -8,6 +8,7 @@ namespace MohawkGame2D
         Texture2D Lep = Graphics.LoadTexture("../../../../../Assets/Graphics/Lep.png");
         Texture2D BGS = Graphics.LoadTexture("../../../../../Assets/Graphics/BGS.png");
         Texture2D PotofGold = Graphics.LoadTexture("../../../../../Assets/Graphics/PotofGold.png");
+        
 
         Vector2 cameraPosition = Vector2.Zero;
         float cameraSpeed = 1f;
@@ -63,6 +64,8 @@ namespace MohawkGame2D
             }
 
             Graphics.Draw(Lep, 100, 100);
+
+            
         }
     }
 

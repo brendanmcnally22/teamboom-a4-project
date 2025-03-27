@@ -10,7 +10,7 @@ namespace MohawkGame2D
         Texture2D BackgroundScreen = Graphics.LoadTexture("../../../../../Assets/Graphics/BackgroundScreen.png");
         Texture2D PotofGold = Graphics.LoadTexture("../../../../../Assets/Graphics/PotofGold.png");
         Texture2D StartScreen = Graphics.LoadTexture("../../../../../Assets/Graphics/StartScreen.png");
-        
+        Texture2D WinnerScreen = Graphics.LoadTexture("../../../../../Assets/Graphics/WinnerScreen.png");
 
         Vector2 cameraPosition = Vector2.Zero; 
         float cameraSpeed = 1f; 
@@ -19,7 +19,7 @@ namespace MohawkGame2D
         Player player; // Player instance :D 
         int goldCounter = 0; // Gold Counter
         
-        new Color winScreenBackground = new Color(0, 167, 53);
+        
         bool menuScreen = true;
         bool gameOver = false;
         bool win = false; // Set this to true when player collects all the coins aka wins the game
@@ -237,7 +237,8 @@ namespace MohawkGame2D
 
         private void gameOverScreen()
         {
-            Window.ClearBackground(Color.Red);
+            Window.ClearBackground(Color.OffWhite);
+            Graphics.Draw(WinnerScreen, 0, 0);
 
             Text.Color = Color.Black;
             Text.Draw("Game Over! Press R or X to Restart!", new Vector2(70, 250));
@@ -258,16 +259,11 @@ namespace MohawkGame2D
         
         private void winScreen() // Handle the Win screen input and also draw it aswell!
         {
-            Window.ClearBackground(winScreenBackground);
-
-            Text.Color = Color.White;
-          
-
-            Text.Draw("You Win, You are the LEAPRACHAUN", new Vector2(150, 50));
+            
+            Graphics.Draw(WinnerScreen, 0, 0);
+            
             Text.Draw("Press R or X to restart!", new Vector2(150, 250));
             Text.Draw($"You Collected {goldCounter} Gold!", new Vector2(150, 100));
-
-           
 
             if (Input.IsKeyboardKeyPressed(KeyboardInput.R) || Input.IsKeyboardKeyPressed(KeyboardInput.X) || Input.IsControllerButtonPressed(0, ControllerButton.RightFaceLeft))
             {

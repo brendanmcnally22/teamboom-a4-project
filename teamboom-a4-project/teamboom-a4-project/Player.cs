@@ -25,10 +25,10 @@ namespace MohawkGame2D;
     {
         position = startPosition;
         texture = playerTexture;
-        width = texture.Width; 
+        width = texture.Width;
         height = texture.Height;
-        velocity = Vector2.Zero; 
-
+        velocity = Vector2.Zero;
+    }
         // I dont Know what happened to my original player class (I thought It was merged in here)
         // :( It is still in my branch, but it is to late to merge now. 
         // Its ok this one will do, And We can make it work :) 

@@ -12,7 +12,7 @@ namespace MohawkGame2D;
 
     public Vector2 position;
     public Vector2 velocity;
-    public float speed = 5f; // Player speed
+    public float speed = 4f; // Player speed
     public Texture2D texture;
     public float width;
     public float height;
@@ -32,19 +32,18 @@ namespace MohawkGame2D;
         // I dont Know what happened to my original player class (I thought It was merged in here)
         // :( It is still in my branch, but it is to late to merge now. 
         // Its ok this one will do, And We can make it work :) 
-    }
+    
 
     public void playerMovement()
     {
-
         float moveX = Input.GetControllerAxis(0, ControllerAxis.LeftX);
         velocity.X = moveX * speed; 
 
-        if (Input.IsKeyboardKeyDown(KeyboardInput.A))
+        if (Input.IsKeyboardKeyDown(KeyboardInput.Left))
         {
             position.X -= speed; 
         }
-        if (Input.IsKeyboardKeyDown(KeyboardInput.D))
+        if (Input.IsKeyboardKeyDown(KeyboardInput.Right))
         {
             position.X += speed;
         }
@@ -56,11 +55,9 @@ namespace MohawkGame2D;
             onPlatform = false;
            
         }
-
-        velocity.Y += 0.3f; // Applying Gravity
+        velocity.Y += 0.4f; // Applying Gravity
         position += velocity; // Updating the Position
 
-        
         if(jumpTimer >0)
         {
 
@@ -68,8 +65,6 @@ namespace MohawkGame2D;
             if (jumpTimer < 0)
                 jumpTimer = 0;
         }
-
-
     }
 
     public Vector2 GetSize()
@@ -77,12 +72,10 @@ namespace MohawkGame2D;
         return new Vector2(width, height); // Returns the size of the player for our collision detection :D 
     }
 
-
     public void renderPlayer() // Function To render the player in Game.CS 
     {
         Graphics.Draw(texture, position); // Drawing player using the texture and updated position
     }
-
 }
 
 

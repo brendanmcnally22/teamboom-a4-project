@@ -14,8 +14,6 @@ namespace MohawkGame2D
         public float height;
         
         Sound CoinSound = Audio.LoadSound("../../../../../Assets/Audio/CoinSound.MP3");
-
-
         public GoldCoin(Vector2 pos)
         {
             position = pos;
@@ -23,7 +21,6 @@ namespace MohawkGame2D
             width = texture.Width;
             height = texture.Height;
         }
-
         public void renderCoin()
         {
             // Only want to render the coin if it hasn't been collected
@@ -32,17 +29,13 @@ namespace MohawkGame2D
                 Graphics.Draw(texture, position);
             }
         }
-
         public void MakeNoise()
         {
             Audio.Play(CoinSound);
-            
         }
-
         public Vector2 GetSize()
         {
             return new Vector2(width, height);
         }
-
     }
 }

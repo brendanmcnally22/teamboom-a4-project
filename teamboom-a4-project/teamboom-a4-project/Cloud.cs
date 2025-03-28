@@ -10,13 +10,11 @@ namespace MohawkGame2D
         public float height = 10;
         public Texture2D texture;
 
-
         // Loading Texture for the clouds 
         static Texture2D cloudTexture1 =
             Graphics.LoadTexture("../../../../../Assets/Graphics/Cloud1.png");
         static Texture2D cloudTexture2 =
             Graphics.LoadTexture("../../../../../Assets/Graphics/Cloud2.png");
-
 
         // Predefined Cloud Instances
         public static Cloud cloudInstance1;
@@ -46,7 +44,6 @@ namespace MohawkGame2D
             cloudInstance11 = new Cloud(96, cloudTexture1);
             cloudInstance12 = new Cloud(96, cloudTexture2);
         }
-
         Cloud(float width, Texture2D texture) // Constructor used for static Instance 
         {
             position = Vector2.Zero;
@@ -59,12 +56,10 @@ namespace MohawkGame2D
             this.width = cloud.width;
             this.texture = cloud.texture;
         }
-
         public void Render()
         {
             Graphics.Draw(texture, position);
         }
-
         public Vector2 GetSize()
         {
             return new Vector2(width, height);

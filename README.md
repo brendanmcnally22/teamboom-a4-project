@@ -23,4 +23,4 @@ Jump: Space
 Restart: R
 
 
-Good luck, and may your jumps be legendary, your landings lucky, and your pockets overflowing with gold!
+Good luck! May your jumps be legendary, your landings lucky, and your pockets overflowing with gold!

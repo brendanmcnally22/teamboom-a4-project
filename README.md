@@ -11,16 +11,19 @@ it’s game clover! Snag every last coin to make Leppy the luckiest Leprechaun i
 
 Controls:
 
-Move Left: Arrow Left
+Move Left: A
 
 
-Move Right: Arrow Right
+Move Right: D
 
 
 Jump: Space
 
 
-Restart: R
+Restart: R 
+
+Also there is Controller input aswell! 
+
 
 
 Good luck! May your jumps be legendary, your landings lucky, and your pockets overflowing with gold!

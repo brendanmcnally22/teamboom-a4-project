@@ -32,6 +32,9 @@ Good luck! May your jumps be legendary, your landings lucky, and your pockets ov
 Contributions: 
 
 Brendan: 
-Taija: Cloud class, graphic assets (start screen, game over scree, background, winner screen, lepreachaun, coin, clouds, pot'of'gold), audio (coin sound and gameplay sound). 
+
+Taija: Cloud class, graphic assets created (start screen, game over screen, winner screen, background, lepreachaun, coins, clouds, pot'of'gold), graphic assets implemented in code, audio assets sourced (coin sound and gameplay background sound), audio assets implemented in code.
+
 Ephi:
+
 Kenny:

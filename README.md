@@ -27,3 +27,11 @@ There is Controller input aswell!
 
 
 Good luck! May your jumps be legendary, your landings lucky, and your pockets overflowing with gold!
+
+
+Contributions: 
+
+Brendan: 
+Taija: Cloud class, graphic assets (start screen, game over scree, background, winner screen, lepreachaun, coin, clouds, pot'of'gold), audio (coin sound and gameplay sound). 
+Ephi:
+Kenny:

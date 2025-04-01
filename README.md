@@ -31,10 +31,10 @@ Good luck! May your jumps be legendary, your landings lucky, and your pockets ov
 
 Contributions: 
 
-Brendan: 
+Brendan: Game.CS, Player.CS, Cloud Collision, Camera Implementation Project Management
 
 Taija: Cloud class, graphic assets created (start screen, game over screen, winner screen, background, lepreachaun, coins, clouds, pot'of'gold), graphic assets implemented in code, audio assets sourced (coin sound and gameplay background sound), audio assets implemented in code.
 
 Ephi:
 
-Kenny:
+Kenny: 

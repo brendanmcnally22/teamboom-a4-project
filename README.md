@@ -35,6 +35,6 @@ Brendan: Game.CS, Player.CS, Cloud Collision, Camera Implementation Project Mana
 
 Taija: Cloud class, graphic assets created (start screen, game over screen, winner screen, background, lepreachaun, coins, clouds, pot'of'gold), graphic assets implemented in code, audio assets sourced (coin sound and gameplay background sound), audio assets implemented in code.
 
-Ephi:
+Ephi: Coin.CS, Coin placement in Game.CS, Coin rendering
 
 Kenny: 
